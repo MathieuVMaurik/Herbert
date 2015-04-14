@@ -1,0 +1,15 @@
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\obj\x86\Debug\Herbert.csprojResolveAssemblyReference.cache
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Content\Player.png
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\SDL.dll
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Herbert.exe
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Herbert.pdb
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Lidgren.Network.dll
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Tao.Sdl.dll
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\obj\x86\Debug\Herbert.exe
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\obj\x86\Debug\Herbert.pdb
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Content\Bullet.png
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Content\PlayerG.png
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Content\background-1.png
+C:\Users\Mathieu-laptop\Documents\Visual Studio 2012\Projects\Herbert\Herbert\bin\WindowsGL\Debug\Content\enemy.png
