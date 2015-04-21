@@ -1,0 +1,8 @@
+﻿ChangeLog
+0.1
+made a game,
+Player can fly with the code from tutorial
+enemies have random spawn points
+player may fire bullets with added delay
+enemies die
+0.2

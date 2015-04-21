@@ -11,10 +11,20 @@ namespace Herbert
 {
     class Enemy : Sprite
     {
-        Vector2 mStartPosition;
-        Vector2 mSpeed;
-        Vector2 mDirection;
-        public int Health = 80;
+
+        public bool Alive = true;
+        enum State
+        { 
+            Attack,
+            Reload,
+            Death
+        }
+        State EnemyState = State.Attack;
+        Vector2 EnemyPosistion;
+        Vector2 EnemySpeed;
+        Vector2 EnemyDirection;
+        Vector2 EnemyVelocity;
+        public int Health = 40;
 
         public void LoadContent(ContentManager theContentManager)
         {
@@ -23,24 +33,35 @@ namespace Herbert
         }
         public void Update(GameTime theGameTime)
         {
-          
-                base.Update(theGameTime, mSpeed, mDirection);
+            if (EnemyState == State.Attack)
+            {
+                Attack();
+            }
+
+
+
+            
+
+                base.Update(theGameTime, EnemySpeed, EnemyDirection);
            
           
         }
-
-
+        public void Attack()
+        {
+            this.EnemyVelocity = Player.Posistion + this.EnemyPosistion * this.EnemySpeed;
+            this.Position -= this.EnemySpeed;
+        }
+        
+           
         public override void Draw(SpriteBatch theSpriteBatch)
         {
                 base.Draw(theSpriteBatch);
         }
 
-        public void Spawn( Vector2 theSpeed, Vector2 theDirection)
+        public void Spawn(int rInt)
         {
-            Position =  new Vector2(250,250);
-            mStartPosition = new Vector2(250, 250);
-            mSpeed = theSpeed;
-            mDirection = theDirection;
+            Position =  new Vector2(500, rInt);
+            EnemyPosistion = new Vector2(250, 250);
         }
 
       

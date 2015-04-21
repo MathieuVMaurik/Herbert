@@ -17,11 +17,15 @@ namespace Herbert
         public Rectangle BulletRec;
         public Rectangle EnemyRec;
 
-        
+        public static Vector2 Posistion;
+
+        public Random r = new Random();
+        public int rInt;
+
         const string PLAYER_ASSETNAME = "PlayerG";
-        const int START_POSITION_X = 125;
-        const int START_POSITION_Y = 245;
-        const int PLAYER_SPEED = 200;
+        public const int START_POSITION_X = 125;
+        public const int START_POSITION_Y = 245;
+        public const int PLAYER_SPEED = 200;
         const int MOVE_UP = -1;
         const int MOVE_DOWN = 1;
         const int MOVE_LEFT = -1;
@@ -29,6 +33,10 @@ namespace Herbert
         double FireDelayTime = 200;
         double FireDelay;
         bool MayFire;
+        double SpawnDelayTime = 1000;
+        double SpawnDelay;
+        bool MaySpawn;
+        int MaxEnemy = 20;
 
         enum State
         {
@@ -69,8 +77,12 @@ namespace Herbert
 
             deltaTime = theGameTime.ElapsedGameTime.TotalMilliseconds;
             timer += deltaTime;
+
+            
+            rInt = r.Next(-50, 1200);
             
             KeyboardState aCurrentKeyboardState = Keyboard.GetState();
+           
 
             UpdateMovement(aCurrentKeyboardState);
             UpdateBullet(theGameTime, aCurrentKeyboardState);
@@ -78,6 +90,7 @@ namespace Herbert
             UpdateHit();
 
             CanFireTimer(deltaTime);
+            MaySpawnTimer(deltaTime);
 
             mPreviousKeyboardState = aCurrentKeyboardState;
 
@@ -85,15 +98,18 @@ namespace Herbert
 
             base.Update(theGameTime, mSpeed, mDirection);
         }
+
         private void UpdateEnemy(GameTime theGameTime, KeyboardState aCurrentKeyboardState)
         {
-            foreach (Enemy aEnemys in mEnemies)
+            foreach (Enemy aEnemy in mEnemies)
             {
-                aEnemys.Update(theGameTime);
+                aEnemy.Update(theGameTime);
+               
             }
-            if (aCurrentKeyboardState.IsKeyDown(Keys.S) == true)
+            if (MaySpawn == true && mEnemies.Count <= MaxEnemy)
             {
-                SpawnEnemy();  
+                SpawnEnemy(rInt);
+                SpawnDelay = SpawnDelayTime;
             }
         }
         private void UpdateMovement(KeyboardState aCurrentKeyboardState)
@@ -140,12 +156,14 @@ namespace Herbert
                 FireDelay = FireDelayTime;
             }
         }
-        private void SpawnEnemy()
+        private void SpawnEnemy(int rInt)
         {
+            
             Enemy aEnemy = new Enemy();
             aEnemy.LoadContent(mContentManager);
-            aEnemy.Spawn(new Vector2(0, 0), new Vector2(1, 0));
+            aEnemy.Spawn(rInt);
             mEnemies.Add(aEnemy);
+
         }
 
         private void ShootBullet()
@@ -186,6 +204,18 @@ namespace Herbert
                 FireDelay -= deltaTime;
             }
         }
+        private void MaySpawnTimer(double deltaTime)
+        {
+            if (SpawnDelay < 0)
+            {
+                MaySpawn = true;
+            }
+            else
+            {
+                MaySpawn = false;
+                SpawnDelay -= deltaTime;
+            }
+        }
 
         public override void Draw(SpriteBatch theSpriteBatch)
         {
@@ -220,8 +250,9 @@ namespace Herbert
                     }
                     if (aEnemy.Health <= 0)
                     {
-                        aEnemy.Position.X = 500;
-                        aEnemy.Position.Y = 500;
+                        aEnemy.Alive = false;
+                        aEnemy.Position.X = -500;
+                        aEnemy.Position.Y = -500;
                     }
 
                 }
